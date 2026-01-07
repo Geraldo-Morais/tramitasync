@@ -1,0 +1,60 @@
+{
+  "manifest_version": 3,
+  "name": "TramitaSync INSS",
+  "version": "1.0.7",
+  "description": "Sistema de automação INSS com atualização dinâmica",
+  
+  "permissions": [
+    "storage",
+    "history",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  
+  "host_permissions": [
+    "https://planilha.tramitacaointeligente.com.br/*",
+    "https://tramitacaointeligente.com.br/*",
+    "https://atendimento.inss.gov.br/*",
+    "https://*.ngrok-free.app/*",
+    "https://gist.githubusercontent.com/*",
+    "https://*/*",
+    "http://*/*"
+  ],
+  
+  "background": {
+    "service_worker": "background-loader.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "https://planilha.tramitacaointeligente.com.br/*",
+        "https://tramitacaointeligente.com.br/*"
+      ],
+      "js": ["content-loader.js"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["*.png", "*.svg"],
+      "matches": [
+        "https://planilha.tramitacaointeligente.com.br/*",
+        "https://tramitacaointeligente.com.br/*"
+      ]
+    }
+  ],
+
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "csp_rules",
+        "enabled": true,
+        "path": "rules_csp.json"
+      }
+    ]
+  }
+}

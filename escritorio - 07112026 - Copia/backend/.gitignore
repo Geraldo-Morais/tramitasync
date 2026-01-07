@@ -1,0 +1,14 @@
+# Logs
+logs/
+*.log
+
+# Environment
+.env
+.env.local
+
+# Build
+dist/
+
+# Database
+*.sqlite
+*.db

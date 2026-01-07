@@ -1,0 +1,724 @@
+/* ========================================
+   EXTENSÃO TRAMITAÇÃO - MODERN UI
+   ======================================== */
+
+:root {
+    --primary-yellow: #FACC15;
+    /* yellow-400 */
+    --primary-yellow-hover: #EAB308;
+    /* yellow-500 */
+    --primary-text: #713F12;
+    /* yellow-900 */
+
+    --success-green: #22C55E;
+    /* green-500 */
+    --success-green-hover: #16A34A;
+    /* green-600 */
+
+    --bg-gray: #F3F4F6;
+    /* gray-100 */
+    --surface-white: #FFFFFF;
+
+    --text-main: #1F2937;
+    /* gray-800 */
+    --text-muted: #4B5563;
+    /* gray-600 */
+
+    --border-color: #E5E7EB;
+    /* gray-200 */
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Reset Básico para o Modal */
+.extensao-modal * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Container do Modal (Fundo Escuro) */
+.extensao-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* backdrop-blur simulado */
+    backdrop-filter: blur(2px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    animation: extensaoFadeIn 0.2s ease-out;
+}
+
+/* Conteúdo do Modal (Card Branco) */
+.extensao-modal-content {
+    background: var(--surface-white);
+    border-radius: 12px !important;
+    /* rounded-lg */
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 480px;
+    /* max-w-md */
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 24px;
+    /* p-6 */
+    position: relative;
+    animation: extensaoSlideUp 0.3s ease-out;
+    /* Garantir que as bordas arredondadas sejam visíveis */
+    border: none;
+}
+
+/* Modal de WhatsApp - maior e sem scroll */
+#extensao-whatsapp-content {
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    border-radius: 12px !important;
+}
+
+/* Scrollbar customizada para o modal */
+#extensao-whatsapp-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+#extensao-whatsapp-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+#extensao-whatsapp-content::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 10px;
+}
+
+#extensao-whatsapp-content::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+}
+
+/* Garantir que o modal tenha bordas arredondadas em todas as resoluções */
+.extensao-modal-content {
+    border-radius: 12px !important;
+}
+
+/* Responsividade para telas menores */
+@media (max-height: 800px) {
+    #extensao-whatsapp-content {
+        max-height: 90vh;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    #extensao-whatsapp-content {
+        max-width: 95%;
+        padding: 16px;
+    }
+}
+
+/* Títulos */
+.extensao-title {
+    font-size: 1.25rem;
+    /* text-xl */
+    font-weight: 700;
+    /* font-bold */
+    text-align: center;
+    color: var(--text-main);
+    margin-bottom: 24px;
+}
+
+/* Campos de Formulário Modernos */
+.extensao-field-group {
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.extensao-label-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.extensao-label-text {
+    font-size: 0.875rem;
+    /* text-sm */
+    font-weight: 600;
+    /* font-semibold */
+    color: var(--text-main);
+}
+
+.extensao-required-mark {
+    color: #EF4444;
+    /* red-500 */
+}
+
+/* Badges (Pílulas de Status) */
+.extensao-badge {
+    font-size: 0.75rem;
+    /* text-xs */
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+}
+
+.extensao-badge-gray {
+    background-color: #F3F4F6;
+    color: #4B5563;
+    border-color: #E5E7EB;
+}
+
+.extensao-badge-green {
+    background-color: #DCFCE7;
+    /* green-100 */
+    color: #166534;
+    /* green-800 */
+    border-color: #BBF7D0;
+}
+
+.extensao-badge-yellow {
+    background-color: #FEF9C3;
+    /* yellow-50 */
+    color: #854D0E;
+    /* yellow-800 */
+    border-color: #FEF08A;
+}
+
+/* Inputs */
+.extensao-input-modern {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid #D1D5DB;
+    /* gray-300 */
+    border-radius: 6px;
+    /* rounded-md */
+    font-size: 0.875rem;
+    /* text-sm */
+    color: var(--text-main);
+    background-color: #fff;
+    transition: all 0.2s;
+}
+
+.extensao-input-modern:focus {
+    outline: none;
+    border-color: var(--success-green);
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+/* Botões */
+.extensao-btn-action {
+    width: 100%;
+    border: 1px solid #D1D5DB;
+    background-color: #F9FAFB;
+    /* gray-50 */
+    color: var(--text-main);
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+}
+
+.extensao-btn-action:hover {
+    background-color: #fffff0;
+    /* Hover suave */
+}
+
+.extensao-btn-primary {
+    width: 100%;
+    background-color: var(--primary-yellow);
+    color: var(--primary-text);
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.extensao-btn-primary:hover {
+    background-color: var(--primary-yellow-hover);
+    transform: translateY(-1px);
+}
+
+.extensao-btn-secondary {
+    width: 100%;
+    background-color: var(--bg-gray);
+    color: var(--text-main);
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.extensao-btn-secondary:hover {
+    background-color: #E5E7EB;
+}
+
+.extensao-btn-success {
+    background-color: var(--success-green);
+    color: white;
+}
+
+.extensao-btn-success:hover {
+    background-color: var(--success-green-hover);
+}
+
+/* Modo Edição Inline */
+.extensao-edit-wrapper {
+    position: relative;
+    animation: extensaoFadeIn 0.2s;
+}
+
+.extensao-edit-actions {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 6px;
+}
+
+.extensao-icon-btn {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+.extensao-icon-btn:hover {
+    opacity: 0.8;
+}
+
+.extensao-bg-green-soft {
+    background-color: #C8E6C9;
+    color: #1B5E20;
+}
+
+.extensao-bg-red-soft {
+    background-color: #EF9A9A;
+    color: #B71C1C;
+}
+
+/* Status Box (WhatsApp) */
+.extensao-status-box {
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.extensao-status-connected {
+    background-color: #F0FDF4;
+    /* green-50 */
+    border-color: #BBF7D0;
+    /* green-200 */
+}
+
+.extensao-status-disconnected {
+    background-color: #FEF2F2;
+    /* red-50 */
+    border-color: #FECACA;
+    /* red-200 */
+}
+
+.extensao-status-connecting {
+    background-color: #EFF6FF;
+    /* blue-50 */
+    border-color: #BFDBFE;
+    /* blue-200 */
+}
+
+.extensao-status-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.extensao-status-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+.text-green {
+    color: #15803D;
+}
+
+.text-red {
+    color: #B91C1C;
+}
+
+.text-blue {
+    color: #1D4ED8;
+}
+
+/* Botão pequeno (Conectar/Resetar) */
+.extensao-btn-sm {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.btn-outline-green {
+    background: transparent;
+    color: #15803D;
+    border-color: #15803D;
+}
+
+.btn-solid-green {
+    background: #22C55E;
+    color: white;
+    border-color: #22C55E;
+}
+
+.btn-solid-red {
+    background: #EF4444;
+    color: white;
+    border-color: #EF4444;
+}
+
+/* Animações */
+@keyframes extensaoFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes extensaoSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes extensaoSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.extensao-spin {
+    animation: extensaoSpin 1s linear infinite;
+}
+
+/* Utilitários */
+.extensao-flex-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.extensao-w-full {
+    width: 100%;
+}
+
+.extensao-hidden {
+    display: none;
+}
+
+.extensao-mt-4 {
+    margin-top: 16px;
+}
+
+/* Spinner de Loading */
+.extensao-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--bg-gray);
+    border-top-color: var(--primary-yellow);
+    border-radius: 50%;
+    animation: extensaoSpin 0.8s linear infinite;
+    margin: 0 auto;
+}
+
+/* View Mode (campo configurado) */
+.extensao-view-mode {
+    display: block;
+}
+
+/* Tooltip Container */
+.extensao-tooltip-container {
+    position: relative;
+    display: inline-flex;
+    cursor: help;
+}
+
+.extensao-tooltip-container:hover>div {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Feedback Messages */
+.extensao-feedback-success {
+    color: #166534;
+    background: #DCFCE7;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.extensao-feedback-error {
+    color: #991B1B;
+    background: #FEE2E2;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+/* ========================================
+   WHATSAPP - CAMPOS DE NÚMEROS INDIVIDUAIS
+   ======================================== */
+
+/* Campos de input WhatsApp com validação visual */
+.extensao-whatsapp-input {
+    transition: all 0.2s ease;
+}
+
+.extensao-whatsapp-input:focus {
+    border-color: #22C55E;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+/* Estados de validação */
+.extensao-whatsapp-input.input-valid {
+    border-color: #22C55E !important;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1) !important;
+}
+
+.extensao-whatsapp-input.input-invalid {
+    border-color: #EF4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Labels com ícones SVG */
+#extensao-whatsapp-numeros-individuais label svg {
+    flex-shrink: 0;
+}
+
+/* ========================================
+   WHATSAPP - ANIMAÇÕES DE CONEXÃO
+   ======================================== */
+
+/* Animação de Pulse para QR Code */
+@keyframes extensaoPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        transform: scale(1.02);
+    }
+}
+
+.extensao-qr-pulse {
+    animation: extensaoPulse 2s infinite ease-in-out;
+}
+
+/* Animação de Sucesso (Check) */
+@keyframes extensaoSuccess {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.extensao-success-anim {
+    animation: extensaoSuccess 0.5s ease-out;
+}
+
+/* Animação de Shake (erro) */
+@keyframes extensaoShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-4px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+.extensao-shake {
+    animation: extensaoShake 0.5s ease;
+}
+
+/* Badge Modo Dev */
+.extensao-dev-badge {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%);
+    border: 1px solid #C084FC;
+    border-left: 4px solid #9333EA;
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    animation: extensaoSlideUp 0.4s ease-out;
+}
+
+.extensao-dev-badge strong {
+    color: #7C3AED;
+    font-size: 13px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.extensao-dev-badge p {
+    color: #6B21A8;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Container QR Code com animação */
+.extensao-qr-container {
+    margin-top: 16px;
+    text-align: center;
+    animation: extensaoFadeIn 0.3s ease-out;
+}
+
+.extensao-qr-box {
+    display: inline-block;
+    padding: 12px;
+    background: white;
+    border: 2px solid #60A5FA;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.extensao-qr-placeholder {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.extensao-qr-expiry {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: #FEF9C3;
+    border: 1px solid #FDE047;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 11px;
+    color: #854D0E;
+    font-weight: 500;
+}
+
+/* Estado Conectado com animação */
+.extensao-connected-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+    border: 1px solid #86EFAC;
+    border-radius: 8px;
+}
+
+.extensao-connected-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Barra de progresso de conexão */
+.extensao-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #E5E7EB;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.extensao-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3B82F6, #60A5FA);
+    border-radius: 2px;
+    animation: extensaoProgress 60s linear forwards;
+}
+
+@keyframes extensaoProgress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}

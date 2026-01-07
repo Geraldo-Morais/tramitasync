@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>INSS Automacao BPC</title>
+  <style>
+    body { font-family: Arial, sans-serif; min-width: 250px; }
+    button { margin-top: 10px; width: 100%; }
+    label { display: block; margin-top: 10px; }
+    input, select { width: 100%; }
+  </style>
+</head>
+<body>
+  <h3>Automacao BPC INSS</h3>
+  <label>CPF do requerente:<input id="cpf" type="text" value="093.010.875-29"></label>
+  <label>Celular:<input id="celular" type="text" value="(77) 9 9927-1876"></label>
+  <label>Cidade:
+    <select id="cidade">
+      <option value="ita">Itapetinga</option>
+      <option value="vca">Vitoria da Conquista</option>
+    </select>
+  </label>
+  <button id="start">Iniciar automacao</button>
+  <button id="resume">Retomar (CAPTCHA ou pausa)</button>
+  <button id="kill">Matar backdrops</button>
+  <div id="status"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

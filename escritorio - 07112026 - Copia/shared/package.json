@@ -1,0 +1,23 @@
+{
+    "name": "@inss-manager/shared",
+    "version": "1.0.0",
+    "description": "Tipos TypeScript compartilhados entre backend e frontend",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "clean": "rimraf dist"
+    },
+    "keywords": [
+        "typescript",
+        "types",
+        "shared"
+    ],
+    "author": "",
+    "license": "UNLICENSED",
+    "devDependencies": {
+        "typescript": "^5.3.3",
+        "rimraf": "^5.0.5"
+    }
+}
